@@ -27,6 +27,9 @@ app.use(offerRoutes);
 
 // Création d'une route sécuriser en cas de défaut
 
+app.get("/", (req, res) => {
+  res.json("Bienvenue sur mon serveur");
+});
 app.all("*", (req, res) => {
   res.status(400).json({ message: "THis route doesn't exist" });
 });
