@@ -3,7 +3,9 @@ const mongoose = require("mongoose");
 const cloudinary = require("cloudinary").v2;
 require("dotenv").config(); //Permet d'activer les variables d'environnement qui se trouvent dans le fichier '.env'
 const app = express();
+const cors = require("cors");
 app.use(express.json());
+app.use(cors());
 
 mongoose.set("strictQuery", false);
 mongoose.connect(process.env.MONGODB_URI);
