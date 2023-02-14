@@ -54,7 +54,7 @@ router.post(
             EMPLACEMENT: city,
           },
         ],
-        // product_image: result,
+        // product_image: [result],
         owner: req.user,
       });
       console.log(newOffer);
@@ -136,6 +136,18 @@ router.get("/offer/:id", async (req, res) => {
       "owner",
       "account"
     );
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
+
+router.post("/upload/muliple", fileUpload(), async (req, res) => {
+  try {
+    const picturesToUpload = req.files.pictures;
+    if (req.files.pictures) {
+      offer.product_image = req.files.pictures;
+    }
+    const result = await cloudinary.uploader.upload(convertToBase64(picture));
   } catch (error) {
     res.status(400).json({ message: error.message });
   }

@@ -4,6 +4,7 @@ const cloudinary = require("cloudinary").v2;
 require("dotenv").config(); //Permet d'activer les variables d'environnement qui se trouvent dans le fichier '.env'
 const app = express();
 const cors = require("cors");
+const stripe = require("stripe")(process.env.STRIPE_API_KEY);
 app.use(express.json());
 app.use(cors());
 
